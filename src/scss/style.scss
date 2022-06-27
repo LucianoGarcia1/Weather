@@ -1,0 +1,122 @@
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+
+.App{
+    width: 100%;
+    min-height: 100vh;
+    @include flex-center;
+    flex-direction: column;
+    gap: 1em;
+
+    .Header{
+        min-width: 50%;
+        text-align: center;
+        @include flex-center;
+
+        .search, button{
+            height: 45px;
+            border: transparent;
+            font-size: 1em;
+            background-color: $background-white;
+            color: $background-black;
+        }
+        .search{
+            min-width: 90%;
+            outline: none;
+            border-radius: 5px 0px 0px 5px;
+            transition: all .5s;
+            padding-left: 30px;
+        }
+        .search::placeholder{
+            font-size: 1em;
+            color: $background-black;
+        }
+        .search:focus{
+            border: 1px solid $background-yellow;
+        }
+
+        .search:focus ~ button{
+            border: 1px solid $background-yellow;
+        }
+
+        .search::-webkit-search-cancel-button {
+            position: relative;
+            right: 30px;
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            background-image: url('../../public/img/close-outline\ \(1\).svg');
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        button{
+            min-width: 10%;
+            cursor: pointer;
+            border-radius: 0px 5px 5px 0px;
+            transition: all .5s;
+        }
+
+    }//HEADER
+
+    .Container{
+        width: 50%;
+        height: 400px;
+        border-radius: 5px;
+        background-color: $background-black;
+
+        @include flex-center;
+        flex-direction: column;
+        gap: 2em;
+
+        .temp{
+            width: 100%;
+            @include flex-center;
+            justify-content: space-between;
+            .temperatura{
+                @include flex-center;
+                flex-direction: column;
+
+                .graus{
+                    font-size: 1.6em;
+                    color: $background-yellow;
+                }
+            }
+        }
+
+        h1{
+            width: 100%;
+            font-size: 1.6em;
+            font-weight: normal;
+            color: $background-white;
+        }
+        h3{
+            font-size: 1em;
+            font-weight: normal;
+            color: $background-gray;
+        }
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .Container{
+        min-width: 80%;
+    }
+    .Header{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .Container{
+        min-width: 90%;
+
+        .temp{
+            flex-direction: column;
+        }
+    }
+    .Header{
+        width: 90%;
+    }
+}
